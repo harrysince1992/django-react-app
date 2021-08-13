@@ -11,7 +11,11 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
+
+#Entry for getting dynamic EC2IP using instance metadata
+ec2ip = os.environ.get('EC2_IP')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,7 +29,7 @@ SECRET_KEY = 'o$&u%nbd)@uta53xz=zl1(3icpuhun2%pz(17^6lbgf(g%qa#f'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', ec2ip]
 
 
 # Application definition
